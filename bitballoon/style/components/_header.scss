@@ -1,0 +1,227 @@
+$iota-components-header-name: 'header';
+$iota-components-header-active-name: 'active';
+$iota-components-header-menu-name: 'menu';
+$iota-components-header-button-name: 'button';
+$iota-components-header-nav-name: 'nav';
+$iota-components-header-wrapper-name: 'wrapper';
+$iota-components-header-logo-name: 'logo';
+$iota-components-header-logo-item-name: 'item';
+$iota-components-header-separator: '-';
+$iota-components-header-height: 50px;
+$iota-components-header-gutter: 10px;
+$iota-components-header-namespace: $iota-global-components-namespace + $iota-components-header-name; // .c-header
+
+.#{$iota-components-header-namespace} {
+  &.opaque {
+    background-color: $iota-global-white;
+    box-shadow      : 0 2px 20px 1px rgba(0,0,0,0.1);
+  }
+  background-color: transparent;
+  box-shadow      : 0 0 0 rgba(0,0,0,0);
+  transition      : background-color 0.25s linear, box-shadow 0.25s linear;
+  position        : fixed;
+  box-sizing      : content-box;
+  z-index         : 10;
+  width           : 100%;
+  padding         : $iota-components-header-gutter;
+  max-height      : $iota-components-header-height;
+  // .c-header_wrapper
+  .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-wrapper-name} {
+    display        : -webkit-flex;
+    display        : -ms-flex;
+    display        : flex;
+    justify-content: space-between;
+    // .c-header_logo
+    .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-logo-name} {
+      height: $iota-components-header-height;
+
+      a {
+        color          : $iota-global-primary-color;
+        text-decoration: none;
+        font-size      : 50px;
+        transition     : color 0.3s linear;
+
+        &:visited {
+          color: $iota-global-primary-color;
+        }
+      }
+    }
+    // .c-header_nav
+    .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-nav-name} {
+      margin-right: 25px;
+      // .c-header_nav-button
+      .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-nav-name + $iota-components-header-separator + $iota-components-header-button-name} {
+        transition: all 0.4s linear;
+        width     : $iota-components-header-height;
+        height    : $iota-components-header-height;
+        position  : relative;
+
+        &::before {
+          background-color        : $iota-global-primary-color;
+          -webkit-transform       : translate3d(0, -10px, 0) scale3d(0.8, 1, 1);
+          transform               : translate3d(0, -10px, 0) scale3d(0.8, 1, 1);
+          content                 : '';
+          position                : absolute;
+          top                     : 50%;
+          left                    : 0;
+          width                   : 100%;
+          height                  : 2px;
+          pointer-events          : none;
+          -webkit-transition      : -webkit-transform 0.25s;
+          transition              : transform 0.25s, background-color 0.25s linear;
+          -webkit-transform-origin: 50% 50%;
+          transform-origin        : 50% 50%;
+        }
+
+        span {
+          top               : 50%;
+          // transform         : scale3d(1,1,1);
+          background-color  : $iota-global-primary-color;
+          position          : absolute;
+          left              : 0;
+          overflow          : hidden;
+          width             : 100%;
+          height            : 2px;
+          text-indent       : 200%;
+          -webkit-transition: opacity 0.25s;
+          transition        : opacity 0.25s, background-color 0.25s linear;
+        }
+
+        &::after {
+          background-color        : $iota-global-primary-color;
+          -webkit-transform       : translate3d(0, 10px, 0) scale3d(0.8, 1, 1);
+          transform               : translate3d(0, 10px, 0) scale3d(0.8, 1, 1);
+          content                 : '';
+          position                : absolute;
+          top                     : 50%;
+          left                    : 0;
+          width                   : 100%;
+          height                  : 2px;
+          pointer-events          : none;
+          -webkit-transition      : -webkit-transform 0.25s;
+          transition              : transform 0.25s, background-color 0.25s linear;
+          -webkit-transform-origin: 50% 50%;
+          transform-origin        : 50% 50%;
+        }
+      }
+      // .c-header_nav-wrapper
+      .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-nav-name + $iota-components-header-separator + $iota-components-header-wrapper-name} {
+        max-width    : 900px;
+        padding-right: 40px;
+        @include iota-breakpoint(sm) {
+          height: $iota-components-header-height;
+          width : 69vw;
+        }
+        @include iota-breakpoint(md) {
+          width: 50vw;
+        };
+        // .c-header_nav-wrapper-menu
+        .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-nav-name + $iota-components-header-separator + $iota-components-header-wrapper-name + $iota-components-header-separator + $iota-components-header-menu-name} {
+          display        : none;
+          flex-direction : column;
+          position       : absolute;
+          background     : transparent;
+          transition     : width 0.25s linear, top 0.5s linear, background 0.5s linear;
+          width          : 100vw;
+          height         : 100vh;
+          right          : 0;
+          left           : 0;
+          top            : -100vh;
+          padding        : 70px 10vw 100px;
+          box-sizing     : border-box;
+          justify-content: space-evenly;
+          @include iota-breakpoint(sm) {
+            display        : -webkit-flex;
+            display        : -ms-flex;
+            display        : flex;
+            flex-direction : row;
+            flex-wrap      : nowrap;
+            align-items    : center;
+            justify-content: space-between;
+            width          : 100%;
+            max-width      : 920px;
+            height         : 100%;
+            position       : initial;
+            padding        : 0;
+          }
+          // .c-header_nav-item
+          .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-nav-name + $iota-components-header-separator + 'item'} {
+            @include iota-breakpoint(sm) {
+              // text-decoration: underline;
+              color    : $iota-global-primary-color;
+              font-size: 12px;
+            }
+            font-family   : 'Comfortaa', sans-serif;
+            font-weight   : 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display       : inline-block;
+            color         : $iota-global-white;
+            cursor        : pointer;
+            margin        : 10px;
+            font-size     : 18px;
+
+            a,
+            a:visited {
+              color          : inherit;
+              text-decoration: none;
+            }
+
+            &.#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-nav-name + $iota-components-header-separator + 'item' + $iota-components-header-separator + $iota-components-header-button-name} {
+              color           : $iota-global-white;
+              background-color: $iota-global-secondary-color;
+              padding         : 10px 20px;
+              border-radius   : 40px;
+            }
+          }
+        }
+      }
+    }
+
+    &.active {
+      .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-logo-name} {
+        a {
+          color: $iota-global-off-white;
+        }
+      }
+
+      .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-nav-name + $iota-components-header-separator + $iota-components-header-button-name} {
+        &::before {
+          transform       : rotate3d(0, 0, 1, 45deg);
+          background-color: $iota-global-off-white;
+        }
+
+        span {
+          opacity         : 0;
+          background-color: $iota-global-off-white;
+        }
+
+        &::after {
+          transform       : rotate3d(0, 0, 1, -45deg);
+          background-color: $iota-global-off-white;
+        }
+      }
+
+      .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-nav-name + $iota-components-header-separator + $iota-components-header-wrapper-name} {
+        .#{$iota-components-header-namespace + $iota-global-separator + $iota-components-header-nav-name + $iota-components-header-separator + $iota-components-header-wrapper-name + $iota-components-header-separator + $iota-components-header-menu-name} {
+          display   : -webkit-flex;
+          display   : -ms-flex;
+          display   : flex;
+          background: $iota-global-primary-color;
+          position  : absolute;
+          width     : 100vw;
+          left      : 0;
+          height    : 100vh;
+          top       : 0;
+          z-index   : -1;
+          @include iota-breakpoint(sm) {
+            background: transparent;
+            position  : initial;
+            width     : 50vw;
+            height    : auto;
+          };
+        }
+      }
+    }
+  }
+}

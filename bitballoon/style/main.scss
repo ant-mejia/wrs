@@ -1,0 +1,119 @@
+@import './assets/fonts/config.scss';
+@import 'settings/core';
+@import 'tools/core';
+@import 'tools/breakpoint';
+@import 'tools/ms';
+@import 'tools/rtl';
+@import 'tools/type';
+@import 'objects/list';
+@import 'objects/media';
+@import 'objects/type';
+@import 'objects/grid';
+@import 'objects/container';
+@import 'utilities/align';
+@import 'utilities/bgcolor';
+@import 'utilities/clearfix';
+@import 'utilities/color';
+@import 'utilities/display';
+@import 'utilities/float';
+@import 'utilities/flex';
+@import 'utilities/height';
+@import 'utilities/margin';
+@import 'utilities/opacity';
+@import 'utilities/padding';
+@import 'utilities/position';
+@import 'utilities/pull';
+@import 'utilities/push';
+@import 'utilities/size';
+@import 'utilities/text';
+@import 'utilities/transform';
+@import 'utilities/weight';
+@import "assets/fonts/config";
+@import "partials/partials";
+@import "components/components";
+
+body {
+  margin        : 0;
+  display       : flex;
+  min-height    : 100vh;
+  flex-direction: column;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $iota-global-heading-font;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .c-page {
+    flex      : 1;
+    overflow-x: hidden;
+
+    .text-separator {
+      display         : block;
+      height          : 3px;
+      background-color: lighten($iota-global-lightgrey, 20%);
+      max-width       : 50px;
+      margin-top      : 40px;
+      margin-bottom   : 40px;
+      @include iota-breakpoint(sm) {
+        margin-top   : 0;
+        margin-bottom: 0;
+      };
+    }
+    @each $iota-separator-key, $iota-separator-val in $iota-global-colors {
+      .text-separator-#{$iota-separator-key} {
+        @extend .text-separator;
+        background-color: $iota-separator-val;
+      }
+    }
+
+    &.index {
+      .analytics-background {
+        background       : url('../assets/images/linepath.png') repeat-x left center;
+        background-repeat: repeat-x;
+        background-origin: content-box;
+        background-clip  : border-box;
+        // background-attachment: fixed;
+      }
+
+      .home-background {}
+    }
+  }
+
+  .icon-row {
+    display       : -webkit-flex;
+    display       : -ms-flex;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    @include iota-breakpoint(sm) {
+      flex-direction: row;
+    }
+
+    .icon-row_item {
+      max-width: 300px;
+
+      .icon-wrapper {
+        text-align: center;
+
+        .icon {
+          padding-top: 25px;
+          font-size  : 90px;
+        }
+      }
+    }
+  }
+
+  .icon-gradient {
+    background             : -webkit-linear-gradient(45deg,#24c6dc,#514a9d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

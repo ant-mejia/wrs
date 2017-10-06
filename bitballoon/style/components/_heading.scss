@@ -1,0 +1,29 @@
+// Options
+$iota-components-heading: true;
+$iota-components-heading-namespace: 'heading' !default;
+$iota-components-heading-active-namespace: 'active' !default;
+$iota-components-heading-padding: $iota-global-gutter-default !default;
+$iota-components-heading-background: $iota-global-secondary-color !default; //
+$iota-components-heading-var-heading: $iota-global-components-namespace + $iota-components-heading-namespace;
+$iota-components-heading-var-heading-active: $iota-global-components-namespace + $iota-components-heading-namespace + $iota-global-separator + $iota-components-heading-active-namespace;
+$iota-components-heading-size: (h1: 2.625, h2: 2, h3: 1.5, h4: 1.25, h5: 1, h6: 0.875);
+$iota-components-heading-size-extra: (-large: 0.35, -xlarge: 0.6 );
+@each $iota-components-heading-sizeKey, $iota-components-heading-sizeVal in $iota-components-heading-size {
+  #{$iota-components-heading-sizeKey} {
+    @include iota-type(#{$iota-components-heading-sizeVal + 'rem'});
+  }
+  @each $iota-components-heading-size-extraKey, $iota-components-heading-size-extraVal in $iota-components-heading-size-extra {
+    #{$iota-components-heading-sizeKey + '.' + $iota-components-heading-var-heading + $iota-components-heading-size-extraKey} {
+      font-size: #{$iota-components-heading-sizeVal + $iota-components-heading-sizeVal * $iota-components-heading-size-extraVal + 'rem'};
+    }
+  }
+}
+
+.#{$iota-components-heading-var-heading + $iota-global-separator + 'section'} {
+  text-align    : center;
+  font-weight   : bold;
+  letter-spacing: 2.5px;
+  color         : $iota-global-off-white;
+  text-transform: uppercase;
+  margin-bottom : 30px;
+}

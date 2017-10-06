@@ -1,0 +1,18 @@
+$iota-utils-height-name: 'height';
+$iota-utils-height-namespace: $iota-global-utilities-namespace + $iota-utils-height-name;
+$iota-utils-height-separator: '-';
+$iota-utils-height-breakpoints: $iota-global-breakpoints;
+@for $iota-utils-height-var-i from 1 through 10 {
+  .#{$iota-utils-height-namespace + $iota-utils-height-separator + $iota-utils-height-var-i + 'vh'} {
+    min-height: $iota-utils-height-var-i * 10 + 'vh';
+  }
+}
+@each $iota-utils-height-var-breakpoint-name, $iota-utils-height-var-breakpoint-size in $iota-utils-height-breakpoints {
+   @include iota-breakpoint($iota-utils-height-var-breakpoint-name){
+    @for $iota-utils-height-var-i from 1 through 10 {
+      .#{$iota-utils-height-namespace + $iota-utils-height-separator + $iota-utils-height-var-i + 'vh' + $iota-global-breakpoint-separator + $iota-utils-height-var-breakpoint-name} {
+        min-height: #{$iota-utils-height-var-i * 10 + 'vh'};
+      }
+    }
+  }
+}

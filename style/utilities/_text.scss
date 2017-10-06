@@ -1,0 +1,52 @@
+/**
+ * Enables / Disables breakpoint specific classes
+ *
+ * Type: Boolean
+ */
+$iota-utils-text-res: true;
+/**
+ * Overrides breakpoints map only for position utility
+ *
+ * Type: Map
+ */
+$iota-utils-text-breakpoints: $iota-global-breakpoints;
+/**
+ * Namespace classes
+ *
+ * Type: String
+ */
+$iota-utils-text-namespace: 'text-';
+$iota-utils-text-left-name: 'left';
+$iota-utils-text-lowercase-name: 'lowercase';
+$iota-utils-text-uppercase-name: 'uppercase';
+$iota-utils-text-capital-name: 'capital';
+$iota-utils-text-right-name: 'right';
+$iota-utils-text-center-name: 'center';
+
+.#{$iota-global-utilities-namespace + $iota-utils-text-namespace + $iota-utils-text-lowercase-name} {
+  text-transform: lowercase;
+}
+
+.#{$iota-global-utilities-namespace + $iota-utils-text-namespace + $iota-utils-text-uppercase-name} {
+  text-transform: uppercase;
+}
+
+.#{$iota-global-utilities-namespace + $iota-utils-text-namespace + $iota-utils-text-capital-name} {
+  text-transform: capitalize;
+}
+@each $iota-utils-text-key, $iota-utils-text-val in $iota-utils-text-breakpoints {
+   @include iota-breakpoint($iota-utils-text-key){
+    .#{$iota-global-utilities-namespace + $iota-utils-text-namespace + $iota-utils-text-lowercase-name + $iota-global-breakpoint-separator + $iota-utils-text-key} {
+      text-transform: lowercase;
+    }
+
+    .#{$iota-global-utilities-namespace + $iota-utils-text-namespace + $iota-utils-text-uppercase-name + $iota-global-breakpoint-separator + $iota-utils-text-key} {
+      text-transform: uppercase;
+    }
+
+    .#{$iota-global-utilities-namespace + $iota-utils-text-namespace + $iota-utils-text-capital-name + $iota-global-breakpoint-separator + $iota-utils-text-key} {
+      text-transform: capitalize;
+    }
+  }
+}
+@import '../../node_modules/iotacss/utilities/text';

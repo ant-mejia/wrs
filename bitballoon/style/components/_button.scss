@@ -1,0 +1,11 @@
+$iota-components-button-name: 'button';
+
+.#{$iota-global-components-namespace + $iota-components-button-name} {}
+
+.c-button-secondary-rounded {
+  background   : $iota-global-secondary-color;
+  padding      : 15px 30px;
+  border-radius: 50px;
+  color        : #fff;
+  text-align   : center;
+}

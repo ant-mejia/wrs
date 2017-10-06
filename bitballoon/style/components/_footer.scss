@@ -1,0 +1,11 @@
+$iota-components-footer-name: 'footer';
+$iota-components-footer-wrapper-name: 'wrapper';
+$iota-components-footer-namespace: $iota-global-components-namespace + $iota-components-footer-name;
+
+.#{$iota-components-footer-namespace} {
+  background: rgb(58, 80, 119);
+
+  .#{$iota-components-footer-namespace + $iota-global-separator + $iota-components-footer-wrapper-name} {
+    background: #000;
+  };
+}

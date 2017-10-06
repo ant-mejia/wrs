@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack src/main.js dist/main.min.js --optimize-minimize && webpack",
     "watch-js": "chokidar-cmd -c 'npm run build' -t src/main.js",
     "build-css": "node-sass-chokidar --include-path ./style --include-path ./node_modules style/ -o style/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./style --include-path ./node_modules style/ -o style/ --watch --recursive",

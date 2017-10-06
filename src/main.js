@@ -26,7 +26,7 @@ $(function() {
       left: 0
     }
   });
-  sr.reveal("#main-section *");
+  sr.reveal("#main-section *:not([class$='container'])");
   sr.reveal("footer *");
   $(".c-header_nav-button").on("click", function(event) {
     var eventTarget;
@@ -35,7 +35,7 @@ $(function() {
     return $(eventTarget).toggleClass("active");
   });
   $(".c-header_logo").on("click", function(event) {
-    if ($("body").scrollTop() > ($(".c-header").height() * 2)) {
+    if ($(window).scrollTop() > ($("header").height() * 2)) {
       event.preventDefault();
       return $("body").velocity('scroll', {
         duration: 700,

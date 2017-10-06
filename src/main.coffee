@@ -1,7 +1,7 @@
 $ = require 'jquery'
 ScrollReveal = require 'scrollreveal'
 require 'velocity-animate'
-Highcharts = require('highcharts'); 
+Highcharts = require('highcharts');
 
 $ ->
   $(window).on 'scroll', () ->
@@ -20,7 +20,7 @@ $ ->
       bottom: 0,
       left: 0
 
-  sr.reveal "#main-section *"
+  sr.reveal "#main-section *:not([class$='container'])"
   sr.reveal "footer *"
 
   $(".c-header_nav-button").on "click", (event) ->
@@ -29,7 +29,7 @@ $ ->
     $(eventTarget).toggleClass "active"
 
   $(".c-header_logo").on "click", (event) ->
-    if $("body").scrollTop() > ($(".c-header").height() * 2)
+    if $(window).scrollTop() > ($("header").height() * 2)
       event.preventDefault()
       $("body").velocity 'scroll', {
         duration: 700,

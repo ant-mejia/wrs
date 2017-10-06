@@ -1,7 +1,7 @@
 $ = require 'jquery'
 ScrollReveal = require 'scrollreveal'
 require 'velocity-animate'
-Highcharts = require('highcharts');
+Highcharts = require('highcharts'); 
 
 $ ->
   $(window).on 'scroll', () ->

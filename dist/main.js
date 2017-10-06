@@ -7066,6 +7066,8 @@ $(function() {
       allowDecimals: false,
       lineColor: "transparent",
       lineWidth: 0,
+      gridLineColor: "transparent",
+      gridLineWidth: 0,
       labels: {
         formatter: function() {
           return this.value;

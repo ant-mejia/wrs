@@ -6,14 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
+    "watch-js": "chokidar-cmd -c 'npm run build' -t src/main.js",
     "build-css": "node-sass-chokidar --include-path ./style --include-path ./node_modules style/ -o style/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./style --include-path ./node_modules style/ -o style/ --watch --recursive",
-    "serve": "nodemon ./server.js"
+    "serve": "nodemon ./server.js",
+    "watch": "concurrently \"npm run watch-js\" \"npm run watch-css\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "browser-sync": "^2.18.13",
+    "concurrently": "^3.5.0",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-eslint": "^4.0.0",
@@ -31,6 +34,7 @@
     "webpack": "^3.6.0"
   },
   "devDependencies": {
+    "chokidar-cmd": "^1.2.1",
     "express": "^4.16.1",
     "imports-loader": "^0.7.1",
     "morgan": "^1.9.0",

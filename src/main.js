@@ -20,13 +20,13 @@ $(function() {
   });
   window.sr = ScrollReveal({
     viewOffset: {
-      top: $(".c-header").height() + 20,
+      top: $(".c-header").height(),
       right: 0,
       bottom: 0,
       left: 0
     }
   });
-  sr.reveal("#main-section *:not([class$='container'])");
+  sr.reveal("#main-section *:not(.o-container_section):not(.o-grid)");
   sr.reveal("footer *");
   $(".c-header_nav-button").on("click", function(event) {
     var eventTarget;

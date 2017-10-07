@@ -44,18 +44,36 @@ $iota-components-jumbotron-container-background: rgb(255, 255, 255) !default;
         }
         color: blue;
 
-        .#{$iota-global-components-namespace + $iota-components-jumbotron-namespace + $iota-global-separator + 'slideshow' + '-slide-wrapper'} {
-          position      : absolute;
-          top           : 50%;
-          left          : 30px;
-          transition    : all 0.5s linear;
-          display       : -webkit-flex;
-          display       : -ms-flex;
-          display       : flex;
-          flex-direction: column;
+        .#{$iota-global-components-namespace + $iota-components-jumbotron-namespace + $iota-global-separator + 'slideshow' + '-slide-container'} {
+          position        : absolute;
+          width           : 100vw;
+          height          : 100%;
+          left            : 0;
+          top             : 0;
+          background-color: rgba(0, 0, 0, 0.4);
+          display         : -webkit-flex;
+          display         : -ms-flex;
+          display         : flex;
+          flex-direction  : column;
+          justify-content : center;
+          padding-left    : 30px;
+          padding-right   : 10%;
+          transition      : all 0.25s linear;
           @include iota-breakpoint(sm) {
-            left: 60px;
-          };
+            padding-left: 60px;
+          }
+          @include iota-breakpoint(md) {
+            padding-left: 130px;
+          }
+
+          .#{$iota-global-components-namespace + $iota-components-jumbotron-namespace + $iota-global-separator + 'slideshow' + '-slide-wrapper'} {
+            padding-right : 40px;
+            transition    : all 0.5s linear;
+            display       : -webkit-flex;
+            display       : -ms-flex;
+            display       : flex;
+            flex-direction: column;
+          }
         }
       }
       color: #000;

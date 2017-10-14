@@ -8,6 +8,8 @@ require('velocity-animate');
 
 Highcharts = require('highcharts');
 
+require('slick-carousel');
+
 $(function() {
   if ($(window).scrollTop() > $('.c-jumbotron').height()) {
     $(".c-header").addClass('opaque');
@@ -49,73 +51,8 @@ $(function() {
       return console.log('no');
     }
   });
-  $(".c-blimp_menu-item").on("click", function() {
-    var blimpContainer, blimpSlideshow;
-    console.log("success!");
-    console.log($(this).index());
-    blimpContainer = $(this).parent().parent().parent();
-    blimpSlideshow = blimpContainer.find(".c-blimp_slideshow");
-    if (!$(this).is("[data-blimp='active']")) {
-      blimpSlideshow.children().attr("data-blimp", "");
-      blimpSlideshow.children().eq($(this).index()).attr("data-blimp", "active");
-      if ($(this).is(":first-child")) {
-        blimpSlideshow.children().last().attr("data-blimp", "prev");
-        return blimpSlideshow.children().eq($(this).next().index()).attr("data-blimp", "next");
-      } else if ($(this).is(":last-child")) {
-        console.log($(this).prev().index());
-        blimpSlideshow.children().eq($(this).prev().index()).attr("data-blimp", "prev");
-        return blimpSlideshow.children().first().attr("data-blimp", "next");
-      } else {
-        blimpSlideshow.children().eq($(this).prev().index()).attr("data-blimp", "prev");
-        blimpSlideshow.children().eq($(this).next().index()).attr("data-blimp", "next");
-        return console.log("normal");
-      }
-    }
-  });
-  $(".c-blimp_menu-control").on("click", function() {
-    var activeIndex, activeSlide, controlIndex, controlItem, slides, slideshow;
-    controlItem = $(this);
-    controlIndex = controlItem.index();
-    slideshow = controlItem.parents().filter(".c-blimp_container").find(".c-blimp_slideshow");
-    slides = slideshow.children();
-    if (slides.is("[data-blimp='active']")) {
-      activeSlide = slides.filter("[data-blimp='active']");
-      activeIndex = activeSlide.index();
-      slides.attr("data-blimp", "");
-      console.log(activeIndex);
-      if (controlIndex === 0) {
-        if (activeSlide.is(":first-child")) {
-          slides.last().prev().attr("data-blimp", "prev");
-          slides.last().attr("data-blimp", "active");
-          return slides.first().attr("data-blimp", "next");
-        } else if (activeIndex === 1) {
-          console.log('booya');
-          slides.last().attr("data-blimp", "prev");
-          activeSlide.prev().attr("data-blimp", "active");
-          return activeSlide.attr("data-blimp", "next");
-        } else {
-          activeSlide.prev().prev().attr("data-blimp", "prev");
-          activeSlide.prev().attr("data-blimp", "active");
-          return activeSlide.attr("data-blimp", "next");
-        }
-      } else {
-        if (activeSlide.is(":last-child")) {
-          activeSlide.attr("data-blimp", "prev");
-          slides.first().attr("data-blimp", "active");
-          return slides.first().next().attr("data-blimp", "next");
-        } else if (activeIndex === slides.length - 2) {
-          console.log("booya");
-          activeSlide.attr("data-blimp", "prev");
-          activeSlide.next().attr("data-blimp", "active");
-          return slides.first().attr("data-blimp", "next");
-        } else {
-          activeSlide.attr("data-blimp", "prev");
-          activeSlide.next().attr("data-blimp", "active");
-          return activeSlide.next().next().attr("data-blimp", "next");
-        }
-      }
-    }
-  });
+  $(".c-blimp_slideshow").slick;
+  $('.your-class').slick;
   $('a[href*="#"]').on("click", function(e) {
     var target;
     e.preventDefault();

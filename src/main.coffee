@@ -1,7 +1,8 @@
 $ = require 'jquery'
 ScrollReveal = require 'scrollreveal'
 require 'velocity-animate'
-Highcharts = require('highcharts');
+Highcharts = require 'highcharts'
+require 'slick-carousel'
 
 $ ->
   if $(window).scrollTop() > $('.c-jumbotron').height()
@@ -43,66 +44,71 @@ $ ->
     else
       console.log 'no'
 
-  $(".c-blimp_menu-item").on "click", () ->
-    console.log "success!"
-    console.log $(@).index()
-    blimpContainer = $(@).parent().parent().parent()
-    blimpSlideshow = blimpContainer.find(".c-blimp_slideshow")
-    if not $(@).is "[data-blimp='active']"
-      blimpSlideshow.children().attr "data-blimp", ""
-      blimpSlideshow.children().eq($(@).index()).attr "data-blimp", "active"
-      if $(@).is(":first-child")
-        blimpSlideshow.children().last().attr "data-blimp", "prev"
-        blimpSlideshow.children().eq($(@).next().index()).attr "data-blimp", "next"
-      else if $(@).is(":last-child")
-        console.log $(@).prev().index()
-        blimpSlideshow.children().eq($(@).prev().index()).attr "data-blimp", "prev"
-        blimpSlideshow.children().first().attr "data-blimp", "next"
-      else
-        blimpSlideshow.children().eq($(@).prev().index()).attr "data-blimp", "prev"
-        blimpSlideshow.children().eq($(@).next().index()).attr "data-blimp", "next"
-        console.log "normal"
+  # $(".c-blimp_menu-item").on "click", () ->
+  #   console.log "success!"
+  #   console.log $(@).index()
+  #   blimpContainer = $(@).parent().parent().parent()
+  #   blimpSlideshow = blimpContainer.find(".c-blimp_slideshow")
+  #   if not $(@).is "[data-blimp='active']"
+  #     blimpSlideshow.children().attr "data-blimp", ""
+  #     blimpSlideshow.children().eq($(@).index()).attr "data-blimp", "active"
+  #     if $(@).is(":first-child")
+  #       blimpSlideshow.children().last().attr "data-blimp", "prev"
+  #       blimpSlideshow.children().eq($(@).next().index()).attr "data-blimp", "next"
+  #     else if $(@).is(":last-child")
+  #       console.log $(@).prev().index()
+  #       blimpSlideshow.children().eq($(@).prev().index()).attr "data-blimp", "prev"
+  #       blimpSlideshow.children().first().attr "data-blimp", "next"
+  #     else
+  #       blimpSlideshow.children().eq($(@).prev().index()).attr "data-blimp", "prev"
+  #       blimpSlideshow.children().eq($(@).next().index()).attr "data-blimp", "next"
+  #       console.log "normal"
+  #
+  # $(".c-blimp_menu-control").on "click", ->
+  #   controlItem = $ @
+  #   controlIndex = controlItem.index()
+  #   slideshow = controlItem.parents().filter(".c-blimp_container").find ".c-blimp_slideshow"
+  #   slides = slideshow.children()
+  #   if slides.is "[data-blimp='active']"
+  #     activeSlide = slides.filter "[data-blimp='active']"
+  #     activeIndex = activeSlide.index()
+  #     slides.attr "data-blimp", ""
+  #     console.log activeIndex
+  #     if controlIndex == 0
+  #       if activeSlide.is(":first-child")
+  #         slides.last().prev().attr "data-blimp", "prev"
+  #         slides.last().attr "data-blimp", "active"
+  #         slides.first().attr "data-blimp", "next"
+  #       else if activeIndex == 1
+  #         console.log 'booya'
+  #         slides.last().attr "data-blimp", "prev"
+  #         activeSlide.prev().attr "data-blimp", "active"
+  #         activeSlide.attr "data-blimp", "next"
+  #       else
+  #         activeSlide.prev().prev().attr "data-blimp", "prev"
+  #         activeSlide.prev().attr "data-blimp", "active"
+  #         activeSlide.attr "data-blimp", "next"
+  #     else
+  #       if activeSlide.is(":last-child")
+  #         activeSlide.attr "data-blimp", "prev"
+  #         slides.first().attr "data-blimp", "active"
+  #         slides.first().next().attr "data-blimp", "next"
+  #       else if activeIndex == slides.length - 2
+  #         # body...
+  #         console.log "booya"
+  #         activeSlide.attr "data-blimp", "prev"
+  #         activeSlide.next().attr "data-blimp", "active"
+  #         slides.first().attr "data-blimp", "next"
+  #
+  #       else
+  #         activeSlide.attr "data-blimp", "prev"
+  #         activeSlide.next().attr "data-blimp", "active"
+  #         activeSlide.next().next().attr "data-blimp", "next"
 
-  $(".c-blimp_menu-control").on "click", ->
-    controlItem = $ @
-    controlIndex = controlItem.index()
-    slideshow = controlItem.parents().filter(".c-blimp_container").find ".c-blimp_slideshow"
-    slides = slideshow.children()
-    if slides.is "[data-blimp='active']"
-      activeSlide = slides.filter "[data-blimp='active']"
-      activeIndex = activeSlide.index()
-      slides.attr "data-blimp", ""
-      console.log activeIndex
-      if controlIndex == 0
-        if activeSlide.is(":first-child")
-          slides.last().prev().attr "data-blimp", "prev"
-          slides.last().attr "data-blimp", "active"
-          slides.first().attr "data-blimp", "next"
-        else if activeIndex == 1
-          console.log 'booya'
-          slides.last().attr "data-blimp", "prev"
-          activeSlide.prev().attr "data-blimp", "active"
-          activeSlide.attr "data-blimp", "next"
-        else
-          activeSlide.prev().prev().attr "data-blimp", "prev"
-          activeSlide.prev().attr "data-blimp", "active"
-          activeSlide.attr "data-blimp", "next"
-      else
-        if activeSlide.is(":last-child")
-          activeSlide.attr "data-blimp", "prev"
-          slides.first().attr "data-blimp", "active"
-          slides.first().next().attr "data-blimp", "next"
-        else if activeIndex == slides.length - 2
-          # body...
-          console.log "booya"
-          activeSlide.attr "data-blimp", "prev"
-          activeSlide.next().attr "data-blimp", "active"
-          slides.first().attr "data-blimp", "next"
+  $(".c-blimp_slideshow").slick
+  $('.your-class').slick
 
-        else
-          activeSlide.attr "data-blimp", "prev"
-          activeSlide.next().attr "data-blimp", "active"
-          activeSlide.next().next().attr "data-blimp", "next"
+
 
   $('a[href*="#"]').on "click", (e) ->
       e.preventDefault();

@@ -1,0 +1,91 @@
+$iota-components-blimp-name: 'blimp';
+$iota-components-blimp-namespace: $iota-global-components-namespace + $iota-components-blimp-name;
+$iota-components-blimp-container-name: 'container';
+$iota-components-blimp-slideshow-name: 'slideshow';
+$iota-components-blimp-wrapper-name: 'wrapper';
+$iota-components-blimp-menu-name: 'menu'; // .c-blimp
+
+.#{$iota-components-blimp-namespace} {
+  // .c-blimp_container
+  .#{$iota-components-blimp-namespace + $iota-global-separator + $iota-components-blimp-container-name} {
+    // .c-blimp_menu
+    .#{$iota-components-blimp-namespace + $iota-global-separator + $iota-components-blimp-menu-name} {
+      color          : red;
+      display        : -webkit-flex;
+      display        : -ms-flex;
+      display        : flex;
+      justify-content: flex-end;
+      z-index        : 10;
+      position       : absolute;
+      width          : 100%;
+      // .c-blimp_menu-controls
+      .#{$iota-components-blimp-namespace + $iota-global-separator + $iota-components-blimp-menu-name + "-controls"} {
+        color     : $iota-global-black;
+        font-size : 40px;
+        padding   : 10px 20px;
+        background: $iota-global-white;
+        // .c-blimp_menu-control
+        .#{$iota-components-blimp-namespace + $iota-global-separator + $iota-components-blimp-menu-name + "-control"} {
+          padding: 0 10px;
+        }
+      }
+    }
+    // .c-blimp_slideshow-wrapper
+    .#{$iota-components-blimp-namespace + $iota-global-separator + $iota-components-blimp-slideshow-name + "-" + $iota-components-blimp-wrapper-name} {
+      margin: -20px;
+      // .c-blimp_slideshow
+      .#{$iota-components-blimp-namespace + $iota-global-separator + $iota-components-blimp-slideshow-name} {
+        position          : relative;
+        perspective-origin: center;
+        display           : -webkit-flex;
+        display           : -ms-flex;
+        display           : flex;
+        justify-content   : space-around;
+        flex-direction    : row;
+        flex-wrap         : nowrap;
+        // .c-blimp_slideshow-slide
+        .#{$iota-components-blimp-namespace + $iota-global-separator + $iota-components-blimp-slideshow-name + "-slide"} {
+          width     : 85%;
+          margin    : 0 auto;
+          position  : absolute;
+          top       : 0;
+          left      : 188%;
+          height    : 100%;
+          opacity   : 0;
+          transition: opacity 0.25s linear;
+
+          img {
+            width: 100%;
+          }
+
+          &[data-blimp="prev"] {
+            background-color: green;
+            position        : absolute;
+            top             : 0;
+            left            : -80%;
+            opacity         : 1;
+            transition      : opacity 0.5s linear;
+          }
+
+          &[data-blimp="active"] {
+            transition      : opacity 0.5s linear, left 0.5s linear;
+            background-color: red;
+            left            : 7%;
+            opacity         : 1;
+          }
+
+          &[data-blimp="next"] {
+            transition      : opacity 0.5s linear, left 0.5s linear;
+            background-color: yellow;
+            left            : 94%;
+            opacity         : 1;
+          }
+
+          &.active + div {
+            color: #0af;
+          }
+        }
+      }
+    }
+  }
+}
